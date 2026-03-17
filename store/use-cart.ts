@@ -13,6 +13,7 @@ interface CartStore {
   items: CartItem[];
   addItem: (data: CartItem) => void;
   removeItem: (id: string) => void;
+  updateQuantity: (id: string, action: 'increase' | 'decrease') => void; // Nouvelle fonction
   removeAll: () => void;
 }
 
@@ -40,6 +41,17 @@ const useCart = create<CartStore>()(
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
+      },
+      updateQuantity: (id: string, action: 'increase' | 'decrease') => {
+        const currentItems = get().items;
+        const updatedItems = currentItems.map((item) => {
+          if (item.id === id) {
+            const newQuantity = action === 'increase' ? item.quantity + 1 : item.quantity - 1;
+            return { ...item, quantity: Math.max(1, newQuantity) }; // Empêche de descendre sous 1
+          }
+          return item;
+        });
+        set({ items: updatedItems });
       },
       removeAll: () => set({ items: [] }),
     }),
