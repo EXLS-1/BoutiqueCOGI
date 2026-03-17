@@ -156,7 +156,7 @@ export default function Home() {
                 <i className="fab fa-whatsapp"></i>
                 <div>
                   <h4>WhatsApp</h4>
-                  <p>+225 XX XX XX XX XX</p>
+                  <p>+243 XX XX XX XX XX</p>
                 </div>
               </div>
             </div>
@@ -237,11 +237,11 @@ export default function Home() {
                 <h4>CONTACT</h4>
                 <ul>
                   <li><a href="mailto:contact@boutiquecogi.com">E-mail</a></li>
-                  <li><a href="https://wa.me/225XXXXXXXXX">WhatsApp</a></li>
+                  <li><a href="https://wa.me/243XXXXXXXXX">WhatsApp</a></li>
                 </ul>
               </div>
               <div className="footer-column">
-                <h4>RÉSEAUX SOCIAUX</h4>
+                <h4>RÉSEAUX</h4>
                 <ul>
                   <li><a href="#" data-social="whatsapp">WhatsApp</a></li>
                   <li><a href="#" data-social="facebook">Facebook</a></li>
