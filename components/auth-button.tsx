@@ -2,24 +2,30 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function AuthButton() {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Fermer le menu quand on clique en dehors
-    const handleClickOutside = () => setMenuOpen(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
     if (menuOpen) {
-      document.addEventListener("click", handleClickOutside);
-      return () => document.removeEventListener("click", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [menuOpen]);
 
   if (session) {
     return (
-      <div className="relative">
+      <div ref={menuRef} className="relative">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="flex items-center gap-2 text-sm font-medium hover:text-gray-700"

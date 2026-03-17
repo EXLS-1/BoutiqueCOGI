@@ -12,7 +12,7 @@ export default function Home() {
               <span className="hero-title-sub">MODE ÉLÉGANTE</span>
             </h1>
             <p className="hero-description">
-              Découvrez notre collection exclusive de vêtements pour femmes, hommes et enfants.
+              Découvrez la collection exclusive de vêtements pour femmes, hommes et enfants.
               Style unique, qualité exceptionnelle.
             </p>
             <a href="#boutique" className="hero-cta">
