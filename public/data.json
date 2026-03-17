@@ -1,0 +1,249 @@
+{
+  "products": {
+    "femme": [
+      {
+        "id": "femme-1",
+        "name": "Robe Étoilée",
+        "price": 45000,
+        "image": "/products/femme-1.jpg",
+        "description": "Robe élégante avec motif étoilé, parfaite pour les occasions spéciales",
+        "category": "femme"
+      },
+      {
+        "id": "femme-2",
+        "name": "Ensemble Chic",
+        "price": 65000,
+        "image": "/products/femme-2.jpg",
+        "description": "Ensemble composé d'une blouse et d'une jupe, style moderne et raffiné",
+        "category": "femme"
+      },
+      {
+        "id": "femme-3",
+        "name": "Robe Longue",
+        "price": 55000,
+        "image": "/products/femme-3.jpg",
+        "description": "Robe longue fluide, idéale pour les soirées élégantes",
+        "category": "femme"
+      },
+      {
+        "id": "femme-4",
+        "name": "Blouse Soie",
+        "price": 35000,
+        "image": "/products/femme-4.jpg",
+        "description": "Blouse en soie naturelle, touche d'élégance pour votre garde-robe",
+        "category": "femme"
+      },
+      {
+        "id": "femme-5",
+        "name": "Jupe Plissée",
+        "price": 28000,
+        "image": "/products/femme-5.jpg",
+        "description": "Jupe plissée légère et confortable, parfaite pour le quotidien",
+        "category": "femme"
+      },
+      {
+        "id": "femme-6",
+        "name": "Robe Printemps",
+        "price": 42000,
+        "image": "/products/femme-6.jpg",
+        "description": "Robe légère et fleurie, idéale pour la saison printanière",
+        "category": "femme"
+      },
+      {
+        "id": "femme-7",
+        "name": "Tailleur Femme",
+        "price": 75000,
+        "image": "/products/femme-7.jpg",
+        "description": "Tailleur complet pour femme, élégance professionnelle",
+        "category": "femme"
+      },
+      {
+        "id": "femme-8",
+        "name": "Chemisier Blanc",
+        "price": 25000,
+        "image": "/products/femme-8.jpg",
+        "description": "Chemisier blanc classique, essentiel de toute garde-robe",
+        "category": "femme"
+      },
+      {
+        "id": "femme-9",
+        "name": "Robe Cocktail",
+        "price": 58000,
+        "image": "/products/femme-9.jpg",
+        "description": "Robe cocktail sophistiquée, parfaite pour les événements",
+        "category": "femme"
+      },
+      {
+        "id": "femme-10",
+        "name": "Pantalon Tailleur",
+        "price": 38000,
+        "image": "/products/femme-10.jpg",
+        "description": "Pantalon de tailleur, coupe parfaite et confort optimal",
+        "category": "femme"
+      },
+      {
+        "id": "femme-11",
+        "name": "Robe Bohème",
+        "price": 48000,
+        "image": "/products/femme-11.jpg",
+        "description": "Robe bohème légère, style décontracté et élégant",
+        "category": "femme"
+      },
+      {
+        "id": "femme-12",
+        "name": "Blouse Dentelle",
+        "price": 32000,
+        "image": "/products/femme-12.jpg",
+        "description": "Blouse en dentelle délicate, touche romantique",
+        "category": "femme"
+      },
+      {
+        "id": "femme-13",
+        "name": "Jupe Cuir",
+        "price": 45000,
+        "image": "/products/femme-13.jpg",
+        "description": "Jupe en cuir synthétique, style rock et moderne",
+        "category": "femme"
+      },
+      {
+        "id": "femme-14",
+        "name": "Robe Soirée",
+        "price": 68000,
+        "image": "/products/femme-14.jpg",
+        "description": "Robe de soirée scintillante, glamour assuré",
+        "category": "femme"
+      },
+      {
+        "id": "femme-15",
+        "name": "Ensemble Sport",
+        "price": 52000,
+        "image": "/products/femme-15.jpg",
+        "description": "Ensemble sport chic, confort et élégance réunis",
+        "category": "femme"
+      },
+      {
+        "id": "femme-16",
+        "name": "Robe Été",
+        "price": 36000,
+        "image": "/products/femme-16.jpg",
+        "description": "Robe légère pour l'été, fraîcheur et légèreté",
+        "category": "femme"
+      },
+      {
+        "id": "femme-17",
+        "name": "Chemisier Coloré",
+        "price": 29000,
+        "image": "/products/femme-17.jpg",
+        "description": "Chemisier aux couleurs vives, ajoutez de la joie à votre tenue",
+        "category": "femme"
+      },
+      {
+        "id": "femme-18",
+        "name": "Robe Classique",
+        "price": 41000,
+        "image": "/products/femme-18.jpg",
+        "description": "Robe classique intemporelle, élégance à l'état pur",
+        "category": "femme"
+      }
+    ],
+    "enfant": [
+      {
+        "id": "enfant-1",
+        "name": "Robe Petite Fille",
+        "price": 22000,
+        "image": "/products/enfant-1.jpg",
+        "description": "Robe adorable pour petite fille, douceur et tendresse",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-2",
+        "name": "Ensemble Garçon",
+        "price": 28000,
+        "image": "/products/enfant-2.jpg",
+        "description": "Ensemble complet pour garçon, style et confort",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-3",
+        "name": "Robe Fille",
+        "price": 25000,
+        "image": "/products/enfant-3.jpg",
+        "description": "Robe élégante pour fille, parfaite pour les occasions",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-4",
+        "name": "Short Garçon",
+        "price": 18000,
+        "image": "/products/enfant-4.jpg",
+        "description": "Short confortable pour garçon, idéal pour l'été",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-5",
+        "name": "Jupe Fille",
+        "price": 20000,
+        "image": "/products/enfant-5.jpg",
+        "description": "Jupe légère pour fille, style et praticité",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-6",
+        "name": "T-shirt Garçon",
+        "price": 15000,
+        "image": "/products/enfant-6.jpg",
+        "description": "T-shirt confortable pour garçon, basique essentiel",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-7",
+        "name": "Robe Spéciale",
+        "price": 32000,
+        "image": "/products/enfant-7.jpg",
+        "description": "Robe spéciale pour occasions, magie et élégance",
+        "category": "enfant"
+      },
+      {
+        "id": "enfant-8",
+        "name": "Pantalon Enfant",
+        "price": 24000,
+        "image": "/products/enfant-8.jpg",
+        "description": "Pantalon confortable pour enfant, robuste et pratique",
+        "category": "enfant"
+      }
+    ],
+    "accessoire": [
+      {
+        "id": "accessoire-1",
+        "name": "Ceinture Élégante",
+        "price": 15000,
+        "image": "/products/accessoire-1.jpg",
+        "description": "Ceinture élégante, accessoire indispensable pour finaliser votre look",
+        "category": "accessoire"
+      },
+      {
+        "id": "accessoire-2",
+        "name": "Collier Perles",
+        "price": 12000,
+        "image": "/products/accessoire-2.jpg",
+        "description": "Collier de perles, touche de sophistication à votre tenue",
+        "category": "accessoire"
+      },
+      {
+        "id": "accessoire-3",
+        "name": "Boucles d'Oreilles",
+        "price": 8000,
+        "image": "/products/accessoire-3.jpg",
+        "description": "Boucles d'oreilles délicates, accessoire parfait pour sublimer votre style",
+        "category": "accessoire"
+      }
+    ]
+  },
+  "social": {
+    "whatsapp": "https://wa.me/225XXXXXXXXX",
+    "facebook": "https://www.facebook.com/boutiquecogi",
+    "telegram": "https://t.me/boutiquecogi",
+    "tiktok": "https://www.tiktok.com/@boutiquecogi",
+    "instagram": "https://www.instagram.com/boutiquecogi"
+  }
+}
