@@ -14,10 +14,7 @@
     "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@auth/prisma-adapter": "^2.11.1",
-=======
->>>>>>> ef4b2cac2c6bbe2ed761b073eca5f5f032a67a17
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-slot": "^1.1.2",
@@ -26,12 +23,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.479.0",
-<<<<<<< HEAD
     "next": "^15.5.13",
     "next-auth": "^4.24.13",
-=======
-    "next": "15.2.2",
->>>>>>> ef4b2cac2c6bbe2ed761b073eca5f5f032a67a17
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
