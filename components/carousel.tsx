@@ -1,51 +1,48 @@
 "use client";
 
-import Stripe from "stripe";
+"use client";
+
+import { Product } from "@prisma/client"; // Utilisation du type Prisma
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Props {
-  products: Stripe.Product[];
+  products: Product[]; // Unifié avec le reste du site
 }
 
 export const Carousel = ({ products }: Props) => {
   const [current, setCurrent] = useState<number>(0);
 
   useEffect(() => {
+    if (products.length === 0) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % products.length);
-    }, 3000);
-
+    }, 5000);
     return () => clearInterval(interval);
   }, [products.length]);
 
-  const currentProduct = products[current];
+  if (!products || products.length === 0) return null;
 
-  const price = currentProduct.default_price as Stripe.Price;
+  const currentProduct = products[current];
 
   return (
     <Card className="relative overflow-hidden rounded-lg shadow-md border-gray-300">
-      {currentProduct.images && currentProduct.images[0] && (
-        <div className="relative h-80 w-full">
-          <Image
-            src={currentProduct.images[0]}
-            alt={currentProduct.name}
-            layout="fill"
-            objectFit="cover"
-            className="transition-opacity duration-500 ease-in-out"
-          />
-        </div>
-      )}
-      <CardContent className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
-        <CardTitle className="text-3xl font-bold text-white mb-2">
+      <div className="relative h-[500px] w-full">
+        <Image
+          src={currentProduct.images[0]} // Prisma utilise un tableau de chaînes
+          alt={currentProduct.name}
+          fill
+          className="object-cover transition-opacity duration-1000"
+        />
+      </div>
+      <CardContent className="absolute inset-0 flex flex-col items-center justify-end pb-12 bg-gradient-to-t from-black/70 to-transparent text-white">
+        <CardTitle className="text-4xl font-bold mb-2">
           {currentProduct.name}
         </CardTitle>
-        {price && price.unit_amount && (
-          <p className="text-xl text-white">
-            ${(price.unit_amount / 100).toFixed(2)}
-          </p>
-        )}
+        <p className="text-2xl font-light">
+          {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF' }).format(currentProduct.price)}
+        </p>
       </CardContent>
     </Card>
   );
