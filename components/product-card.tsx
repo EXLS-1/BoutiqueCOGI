@@ -1,36 +1,23 @@
 "use client";
 
-import Link from "next/link";
+import { Product } from "@prisma/client";
 import Image from "next/image";
 import useCart from "@/store/use-cart";
+import Link from "next/link";
 import useWishlist from "@/store/use-wishlist";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  category: string;
-}
-
-interface Props {
-  product: Product;
-}
-
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
+  
   const wishlist = useWishlist();
   const isFavorite = wishlist.items.some((item) => item.id === product.id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Empêche l'événement de remonter aux parents
     addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
+      ...product,
+      image: product.images[0],
       quantity: 1,
     });
   };
@@ -47,7 +34,7 @@ export const ProductCard = ({ product }: Props) => {
     <div className="product-card">
       <div className="product-image-container relative">
         <Image
-          src={product.image}
+          src={product.images[0]} // Correction ici : accès au tableau
           alt={product.name}
           width={300}
           height={400}
@@ -55,12 +42,27 @@ export const ProductCard = ({ product }: Props) => {
         />
         <button
           onClick={() => wishlist.toggleItem(product)}
+          // Info-bulle au survol
+          title={isFavorite ? "Retirer de la liste de souhaits" : "Ajouter à la liste de souhaits"}
+          // Description pour les lecteurs d'écran
+          aria-label={isFavorite ? "Retirer de la liste de souhaits" : "Ajouter à la liste de souhaits"}
           className={`absolute top-2 right-2 p-2 rounded-full shadow-md transition ${
             isFavorite ? "bg-red-500 text-white" : "bg-white text-gray-400"
           }`}
         >
-          <svg className="h-5 w-5" fill={isFavorite ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          <svg 
+            className="h-5 w-5" 
+            fill={isFavorite ? "currentColor" : "none"} 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+            aria-hidden="true" // L'icône est décorative car le bouton a déjà un label
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" 
+            />
           </svg>
         </button>
         <div className="product-overlay">
