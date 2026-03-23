@@ -3,6 +3,7 @@
 import Image from "next/image";
 import useCart from "@/store/use-cart";
 import Link from "next/link";
+import toast from "react-hot-toast"; // Ajoutez l'import
 
 interface Product {
   id: string;
@@ -29,6 +30,9 @@ export const ProductDetail = ({ product }: Props) => {
       price: product.price,
       image: product.image,
       quantity: 1,
+    });
+    toast.success(`${product.name} ajouté au panier !`, {
+      icon: '🛍️',
     });
   };
 
