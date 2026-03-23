@@ -4,41 +4,7 @@ import { useEffect } from "react";
 
 export const ClientScripts = () => {
   useEffect(() => {
-    // Sidebar toggle functionality
-    const sidebarToggle = document.getElementById("navbar-toggle");
-    const desktopSidebarToggle = document.getElementById("desktop-sidebar-toggle");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-
-    const toggleSidebar = () => {
-      if (sidebar && overlay) {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("active");
-      }
-    };
-
-    if (sidebarToggle) {
-      sidebarToggle.addEventListener("click", toggleSidebar);
-    }
-
-    if (desktopSidebarToggle) {
-      desktopSidebarToggle.addEventListener("click", () => {
-        if (sidebar) {
-          sidebar.classList.toggle("collapsed");
-        }
-      });
-    }
-
-    // Close sidebar when clicking overlay
-    if (overlay) {
-      overlay.addEventListener("click", () => {
-        if (sidebar) {
-          sidebar.classList.remove("open");
-          overlay.classList.remove("active");
-        }
-      });
-    }
-
+   
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
@@ -105,18 +71,7 @@ export const ClientScripts = () => {
       });
     }
 
-    // Cleanup
-    return () => {
-      if (sidebarToggle) {
-        sidebarToggle.removeEventListener("click", toggleSidebar);
-      }
-      if (desktopSidebarToggle) {
-        desktopSidebarToggle.removeEventListener("click", toggleSidebar);
-      }
-      if (overlay) {
-        overlay.removeEventListener("click", toggleSidebar);
-      }
-    };
+    
   }, []);
 
   return null;
