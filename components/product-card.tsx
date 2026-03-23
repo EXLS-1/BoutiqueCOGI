@@ -5,6 +5,7 @@ import Image from "next/image";
 import useCart from "@/store/use-cart";
 import Link from "next/link";
 import useWishlist from "@/store/use-wishlist";
+import toast from "react-hot-toast"; // 1. Ajoutez l'import
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
@@ -14,11 +15,17 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation(); // Empêche l'événement de remonter aux parents
+    e.stopPropagation();
+    
     addItem({
       ...product,
       image: product.images[0],
       quantity: 1,
+    });
+
+    // 2. Déclenchez la notification
+    toast.success(`${product.name} ajouté au panier !`, {
+      icon: '🛍️',
     });
   };
 
