@@ -65,7 +65,9 @@
   }
 
   .main-wrapper {
-    @apply transition-all duration-300 ease-in-out pt-[var(--navbar-height)];
+    /* On garde uniquement le padding supérieur pour que la Navbar ne cache pas le contenu. 
+       Les animations sont désormais gérées dans ui-wrapper.tsx */
+    @apply pt-[var(--navbar-height)];
   }
 
   /* --- Navbar --- */
@@ -105,53 +107,6 @@
   }
   .navbar-toggle {
     @apply md:hidden text-2xl text-gray-800 focus:outline-none;
-  }
-
-  /* --- Sidebar & Overlay --- */
-  .sidebar-overlay {
-    @apply fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300;
-  }
-  .sidebar-overlay.active {
-    @apply opacity-100 pointer-events-auto;
-  }
-  .sidebar {
-    @apply fixed top-0 left-0 h-full w-[var(--sidebar-width)] bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto;
-  }
-  .sidebar.open {
-    @apply translate-x-0;
-  }
-  .sidebar.collapsed {
-    @apply md:w-[80px]; /* État réduit sur desktop si implémenté */
-  }
-  .sidebar-header {
-    @apply flex items-center justify-between p-6 border-b border-gray-100;
-  }
-  .sidebar-logo-text {
-    @apply font-playfair font-bold text-2xl tracking-wide;
-  }
-  .sidebar-menu {
-    @apply flex-1 py-6 flex flex-col gap-2 px-4 list-none m-0;
-  }
-  .sidebar-link {
-    @apply flex items-center gap-4 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-black transition-colors font-medium;
-  }
-  .sidebar-link.active {
-    @apply bg-black text-white;
-  }
-  .sidebar-submenu {
-    @apply hidden pl-12 py-2 flex-col gap-3 list-none;
-  }
-  .sidebar-item.open .sidebar-submenu {
-    @apply flex;
-  }
-  .submenu-arrow {
-    @apply ml-auto transition-transform duration-300;
-  }
-  .sidebar-item.open .submenu-arrow {
-    @apply rotate-180;
-  }
-  .sidebar-footer {
-    @apply p-6 border-t border-gray-100 text-sm text-gray-500 text-center;
   }
 
   /* --- Hero Section --- */
