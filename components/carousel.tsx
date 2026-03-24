@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import { Product } from "@prisma/client"; // Utilisation du type Prisma
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { useEffect, useState } from "react";

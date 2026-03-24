@@ -69,9 +69,7 @@ export const ClientScripts = () => {
         alert('Merci pour votre message ! Nous vous contacterons bientôt.');
         contactForm.reset();
       });
-    }
-
-    
+    }    
   }, []);
 
   return null;
