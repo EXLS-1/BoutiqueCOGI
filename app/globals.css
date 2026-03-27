@@ -37,3 +37,21 @@
   --primary-foreground: oklch(0.205 0 0);
   --border: oklch(0.269 0 0);
 }
+@layer base {
+  html {
+    /* Remplace tout le script de smooth scrolling JS */
+    scroll-behavior: smooth;
+  }
+}
+
+/* Animation Marquee 100% CSS */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
