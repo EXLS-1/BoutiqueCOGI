@@ -6,7 +6,7 @@ import { useState } from "react";
 export const ProductList = ({ products, title }: { products: any[], title: string }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filtered = products.filter(p => 
+ const filtered = (products || []).filter(p => ...) 
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
