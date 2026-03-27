@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Playfair_Display, Lato, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
@@ -11,7 +12,6 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700", "900"], variable: "--font-lato" });
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-cormorant" });
 
-// Le SEO reste ici (Côté Serveur)
 export const metadata: Metadata = {
   title: "Boutique COGI",
   description: "Boutique en ligne de mode élégante - Vêtements pour femmes, hommes et enfants",
@@ -23,21 +23,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
       </head>
-      <body className="bg-black"> {/* Fond noir pour accentuer l'effet de profondeur lors du flou/décalage */}
+      {/* On applique les styles de base directement sur le body via Tailwind */}
+      <body className="bg-black text-foreground font-lato overflow-x-hidden antialiased">
         <RootProviders>
-          
-          {/* Les Sidebars sont FIXES, elles restent en dehors du conteneur qui bouge */}
           <LeftSidebar />
           <RightSidebar />
           
-          {/* Le UIWrapper englobe uniquement ce qui doit réagir (Navbar + Contenu) */}
           <UIWrapper>
             <Navbar />
-            <main className="main-wrapper min-h-screen bg-white">
+            {/* Remplacement de .main-wrapper par du Tailwind pur (pt-[70px]) */}
+            <main className="min-h-screen bg-white pt-[70px]">
               {children}
             </main>
           </UIWrapper>
-
         </RootProviders>
       </body>
     </html>
