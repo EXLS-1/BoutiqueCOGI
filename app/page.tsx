@@ -37,12 +37,13 @@ export default function Home() {
         </div>
 
         {/* Marquee (Bandeau défilant statique pour l'instant) */}
-        <div className="absolute bottom-0 w-full bg-black/50 backdrop-blur-sm border-t border-white/10 py-3 overflow-hidden">
-          <div className="flex space-x-8 whitespace-nowrap text-sm font-bold tracking-widest text-white uppercase animate-pulse justify-center">
+        <div className="overflow-hidden whitespace-nowrap">
+          <div className="animate-marquee flex gap-8">
             <span>✨ NOUVELLES ARRIVÉES ✨</span>
             <span>🌟 COLLECTIONS EXCLUSIVES 🌟</span>
-            <span>💎 QUALITÉ PREMIUM 💎</span>
-            <span>🎨 STYLE UNIQUE 🎨</span>
+            {/* On double le texte manuellement ici pour la boucle infinie */}
+            <span>✨ NOUVELLES ARRIVÉES ✨</span>
+            <span>🌟 COLLECTIONS EXCLUSIVES 🌟</span>
           </div>
         </div>
       </section>
