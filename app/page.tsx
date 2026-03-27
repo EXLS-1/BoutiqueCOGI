@@ -5,18 +5,23 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gray-900" id="home">
+      <section className="relative w-full h-[80vh] min-h-150 flex items-center justify-center overflow-hidden bg-gray-900" id="home">
         
         {/* Vidéos en arrière-plan */}
         <div className="absolute inset-0 w-full h-full flex">
           <div className="w-1/2 h-full relative">
             <video className="absolute inset-0 w-full h-full object-cover opacity-60" autoPlay muted loop playsInline poster="/video-poster1.jpg">
-              <source src="/hero-video1.mp4" type="video/mp4" />
+              <source src="public/Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="w-1/2 h-full relative">
             <video className="absolute inset-0 w-full h-full object-cover opacity-60" autoPlay muted loop playsInline poster="/video-poster2.jpg">
-              <source src="/hero-video2.mp4" type="video/mp4" />
+              <source src="public/Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="w-1/2 h-full relative">
+            <video className="absolute inset-0 w-full h-full object-cover opacity-60" autoPlay muted loop playsInline poster="/video-poster2.jpg">
+              <source src="public/Media-v-20260218/WhatsApp Video 2026-02-18 at 07.10.31 PM.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -61,9 +66,9 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {/* Catégorie : Femme */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
-              <img src="/category-femme.jpg" alt="Habit Femme" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+              <img src="public/Media-p-20260218/pict01.jpeg" alt="Habit Femme" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">HABIT FEMME</h3>
                 <p className="text-gray-200 mb-6">Élégance et sophistication</p>
                 <a href="#catalogue-femme" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -71,9 +76,9 @@ export default function Home() {
             </div>
 
             {/* Catégorie : Homme */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
               <img src="/category-homme.jpg" alt="Habit Homme" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">HABIT HOMME</h3>
                 <p className="text-gray-200 mb-6">Style moderne et raffiné</p>
                 <a href="#catalogue-homme" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -81,9 +86,9 @@ export default function Home() {
             </div>
 
             {/* Catégorie : Enfant */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
               <img src="/category-enfant.jpg" alt="Habit Enfant" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">HABIT ENFANT</h3>
                 <p className="text-gray-200 mb-6">Tendresse et qualité</p>
                 <a href="#catalogue-enfant" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -91,9 +96,9 @@ export default function Home() {
             </div>
 
             {/* Catégorie : Chaussure */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
               <img src="/category-chaussure.jpg" alt="Chaussure Dame" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">CHAUSSURE DAME</h3>
                 <p className="text-gray-200 mb-6">Confort et élégance</p>
                 <a href="#catalogue-chaussure" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -101,9 +106,9 @@ export default function Home() {
             </div>
 
             {/* Catégorie : Sac */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
               <img src="/category-sac.jpg" alt="Sac Dame" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">SAC DAME</h3>
                 <p className="text-gray-200 mb-6">Accessoires indispensables</p>
                 <a href="#catalogue-sac" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -111,9 +116,9 @@ export default function Home() {
             </div>
 
             {/* Catégorie : Accessoire */}
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 shadow-md">
+            <div className="group relative aspect-4/5 overflow-hidden rounded-2xl bg-gray-200 shadow-md">
               <img src="/category-accessoire.jpg" alt="Accessoire" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                 <h3 className="font-playfair text-2xl font-bold mb-2">ACCESSOIRE</h3>
                 <p className="text-gray-200 mb-6">Touches finales parfaites</p>
                 <a href="#catalogue-accessoire" className="inline-block border border-white px-6 py-2 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">VOIR LA COLLECTION</a>
@@ -207,7 +212,7 @@ export default function Home() {
               <i className="fab fa-tiktok text-3xl"></i>
               <span className="text-xs font-bold uppercase tracking-wider">TikTok</span>
             </a>
-            <a href="#" className="flex flex-col items-center justify-center w-24 h-24 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white transition-transform hover:-translate-y-2 shadow-lg gap-2">
+            <a href="#" className="flex flex-col items-center justify-center w-24 h-24 rounded-full bg-linear-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white transition-transform hover:-translate-y-2 shadow-lg gap-2">
               <i className="fab fa-instagram text-3xl"></i>
               <span className="text-xs font-bold uppercase tracking-wider">Instagram</span>
             </a>
