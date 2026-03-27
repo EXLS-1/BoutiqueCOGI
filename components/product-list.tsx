@@ -7,8 +7,7 @@ export const ProductList = ({ products, title }: { products: any[], title: strin
   const [searchTerm, setSearchTerm] = useState("");
 
  const filtered = (products || []).filter(p => ...) 
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    p.name.toLowerCase().includes(searchTerm.toLowerCase());
 
   return (
     <section className="py-20 bg-white">

@@ -1,5 +1,5 @@
 // app/page.tsx
-import { ProductList } from "@/components/product-list";
+import ProductList from '@/components/product-list';
 
 export default function Home() {
   return (
