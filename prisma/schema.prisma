@@ -76,8 +76,8 @@ model Product {
   id          String      @id @default(cuid()) // Permet de garder tes IDs personnalisés (ex: "femme-1")
   name        String
   description String      @db.Text
-  price       Int         // En XOF, les entiers sont préférables pour éviter les erreurs de virgule flottante
-  images      String[]
+  price       float        
+  images      String[]    // tableau d'URLs
   category    String      // femme, homme, enfant, chaussure, sac, accessoire
   stock       Int         @default(0)
   isFeatured  Boolean     @default(false) // Pour mettre en avant sur l'accueil
