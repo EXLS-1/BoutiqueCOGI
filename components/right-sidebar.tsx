@@ -1,127 +1,156 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUIStore } from "@/store/use-ui-store";
 import useCart from "@/store/use-cart";
 import useWishlist from "@/store/use-wishlist";
-import { formatPrice, cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
+
+type Tab = "cart" | "wishlist";
 
 export const RightSidebar = () => {
   const { isRightSidebarOpen, toggleRightSidebar } = useUIStore();
-  const { items: cartItems, removeItem: removeFromCart } = useCart();
-  const { items: wishlistItems, toggleItem: toggleWishlist } = useWishlist();
-  
-  // État local pour basculer entre Panier (cart) et Favoris (wishlist)
-  const [activeTab, setActiveTab] = useState<"cart" | "wishlist">("cart");
+  const { items: cartItems, removeItem } = useCart();
+  const { items: wishlistItems, toggleItem } = useWishlist();
 
-  const cartTotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const [activeTab, setActiveTab] = useState<Tab>("cart");
+
+  const cartTotal = useMemo(
+    () => cartItems.reduce((t, i) => t + i.price * i.quantity, 0),
+    [cartItems]
+  );
+
+  const close = useCallback(() => {
+    if (isRightSidebarOpen) toggleRightSidebar();
+  }, [isRightSidebarOpen, toggleRightSidebar]);
 
   return (
     <aside
+      role="dialog"
+      aria-modal="true"
+      aria-label="Panier et favoris"
       className={cn(
-        "fixed right-0 top-0 z-[100] h-full w-full border-l bg-white shadow-2xl transition-transform duration-300 sm:w-[400px]",
+        "fixed inset-y-0 right-0 z-[100] w-full sm:w-[420px] bg-white border-l shadow-xl transition-transform duration-300",
         isRightSidebarOpen ? "translate-x-0" : "translate-x-full"
       )}
     >
       <div className="flex h-full flex-col">
-        {/* Header avec onglets */}
-        <div className="flex items-center justify-between border-b p-4">
-          <div className="flex gap-4">
-            <button
-              onClick={() => setActiveTab("cart")}
-              className={cn(
-                "pb-1 text-sm font-bold tracking-widest transition-all font-[family-name:var(--font-lato)]",
-                activeTab === "cart" ? "border-b-2 border-black text-black" : "text-gray-400"
-              )}
-            >
-              PANIER ({cartItems.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("wishlist")}
-              className={cn(
-                "pb-1 text-sm font-bold tracking-widest transition-all font-[family-name:var(--font-lato)]",
-                activeTab === "wishlist" ? "border-b-2 border-black text-black" : "text-gray-400"
-              )}
-            >
-              FAVORIS ({wishlistItems.length})
-            </button>
+        {/* Header */}
+        <header className="flex items-center justify-between border-b p-4">
+          <div className="flex gap-6">
+            {(["cart", "wishlist"] as Tab[]).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                aria-selected={activeTab === tab}
+                className={cn(
+                  "text-xs font-bold tracking-widest pb-1 transition",
+                  activeTab === tab
+                    ? "border-b-2 border-black text-black"
+                    : "text-gray-400"
+                )}
+              >
+                {tab === "cart"
+                  ? `PANIER (${cartItems.length})`
+                  : `FAVORIS (${wishlistItems.length})`}
+              </button>
+            ))}
           </div>
-          <button onClick={toggleRightSidebar} className="text-gray-500 hover:text-black">
-            <i className="fa-solid fa-xmark fa-lg"></i>
-          </button>
-        </div>
 
-        {/* Contenu défilant */}
-        <div className="flex-1 overflow-y-auto p-4">
-          {activeTab === "cart" ? (
-            <div className="space-y-4">
+          <button onClick={close} aria-label="Fermer">
+            ✕
+          </button>
+        </header>
+
+        {/* Content */}
+        <section className="flex-1 overflow-y-auto p-4">
+          {activeTab === "cart" && (
+            <>
               {cartItems.length === 0 ? (
-                <p className="py-10 text-center text-gray-500 font-[family-name:var(--font-cormorant)] text-lg italic">
-                  Votre panier est vide.
-                </p>
+                <Empty text="Votre panier est vide." />
               ) : (
                 cartItems.map((item) => (
                   <div key={item.id} className="flex gap-4 border-b pb-4">
-                    <div className="relative h-20 w-20 flex-shrink-0 bg-gray-50">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={80}
+                      height={80}
+                      className="object-cover bg-gray-50"
+                    />
+                    <div className="flex-1">
+                      <p className="text-sm font-bold">{item.name}</p>
+                      <p className="text-xs text-gray-500">
+                        Qté : {item.quantity}
+                      </p>
+                      <p>{formatPrice(item.price)}</p>
                     </div>
-                    <div className="flex flex-1 flex-col">
-                      <h4 className="text-sm font-bold font-[family-name:var(--font-playfair)]">{item.name}</h4>
-                      <p className="text-xs text-gray-500">Qté: {item.quantity}</p>
-                      <p className="mt-1 text-sm font-medium">{formatPrice(item.price)}</p>
-                    </div>
-                    <button onClick={() => removeFromCart(item.id)} className="text-gray-300 hover:text-red-500">
-                      <i className="fa-solid fa-trash-can"></i>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      aria-label="Supprimer"
+                      className="text-gray-400 hover:text-red-500"
+                    >
+                      🗑
                     </button>
                   </div>
                 ))
               )}
-            </div>
-          ) : (
-            <div className="space-y-4">
+            </>
+          )}
+
+          {activeTab === "wishlist" && (
+            <>
               {wishlistItems.length === 0 ? (
-                <p className="py-10 text-center text-gray-500 font-[family-name:var(--font-cormorant)] text-lg italic">
-                  Aucun coup de cœur pour le moment.
-                </p>
+                <Empty text="Aucun favori pour le moment." />
               ) : (
                 wishlistItems.map((item) => (
                   <div key={item.id} className="flex gap-4 border-b pb-4">
-                    <div className="relative h-20 w-20 flex-shrink-0 bg-gray-50">
-                      <Image src={item.images[0]} alt={item.name} fill className="object-cover" />
+                    <Image
+                      src={item.images[0]}
+                      alt={item.name}
+                      width={80}
+                      height={80}
+                    />
+                    <div className="flex-1">
+                      <p className="font-bold">{item.name}</p>
+                      <p>{formatPrice(item.price)}</p>
                     </div>
-                    <div className="flex flex-1 flex-col justify-center">
-                      <h4 className="text-sm font-bold font-[family-name:var(--font-playfair)]">{item.name}</h4>
-                      <p className="text-sm">{formatPrice(item.price)}</p>
-                    </div>
-                    <button onClick={() => toggleWishlist(item)} className="text-red-500">
-                      <i className="fa-solid fa-heart text-red-500"></i>
+                    <button
+                      onClick={() => toggleItem(item)}
+                      aria-label="Retirer des favoris"
+                    >
+                      ❤️
                     </button>
                   </div>
                 ))
               )}
-            </div>
+            </>
           )}
-        </div>
+        </section>
 
-        {/* Pied de page de la Sidebar (uniquement pour le panier) */}
+        {/* Footer */}
         {activeTab === "cart" && cartItems.length > 0 && (
-          <div className="border-t p-4 space-y-4 bg-gray-50">
-            <div className="flex justify-between items-center font-bold">
-              <span className="font-[family-name:var(--font-lato)] tracking-widest text-sm">TOTAL</span>
-              <span className="text-xl">{formatPrice(cartTotal)}</span>
+          <footer className="border-t p-4 bg-gray-50 space-y-4">
+            <div className="flex justify-between font-bold">
+              <span>TOTAL</span>
+              <span>{formatPrice(cartTotal)}</span>
             </div>
-            <Link 
-              href="/checkout" 
-              onClick={toggleRightSidebar}
-              className="block w-full bg-black py-4 text-center text-xs font-bold tracking-[0.2em] text-white transition-colors hover:bg-gray-800"
+            <Link
+              href="/checkout"
+              onClick={close}
+              className="block text-center bg-black text-white py-4 text-xs tracking-widest"
             >
               PASSER À LA CAISSE
             </Link>
-          </div>
+          </footer>
         )}
       </div>
     </aside>
   );
 };
+
+const Empty = ({ text }: { text: string }) => (
+  <p className="py-16 text-center text-gray-400 italic">{text}</p>
+);

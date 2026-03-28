@@ -1,19 +1,103 @@
+// app/page.tsx
 "use client";
 
-// app/page.tsx
-import { Hero } from "@/components/ui/hero";
-import { Boutique } from "@/components/ui/boutique";
-import { ProductCatalog } from "@/components/ui/product-catalog";
-import { Contact } from "@/components/ui/contact";
-import { SocialNetworks } from "@/components/ui/social-networks";
-import { Footer } from "@/components/ui/footer";
+import { useState } from "react";
+import Hero from "@/components/hero";
+import Boutique from "@/components/boutique";
+import ProductCatalog from "@/components/product-catalog";
+import Contact from "@/components/contact";
+import SocialNetworks from "@/components/social-networks";
+import Footer from "@/components/footer";
+
+// Données d’exemple pour le catalogue
+const sampleProducts = [
+  {
+        "id": "f1",
+        "name": "Robe Lumineux à motif floral brillant",
+        "price": "95",
+        "size": "42 à 48",
+        "couleur": "Jaune-Vert vif",
+        "image": "Media-p-20260218/pict09.jpeg",
+        "description": "Robe élégante avec motif étoilé, parfaite pour les occasions spéciales",
+        "category": "femme"
+      },
+      {
+        "id": "f2",
+        "name": "Robe Elégante Espoll",
+        "price": "95",
+        "size": "42 à 48",
+        "couleur": "Noir avec paillette",
+        "image": "Media-p-20260218/pict14.jpeg",
+        "description": "Ensemble composé d'une blouse et d'une jupe, style moderne et raffiné",
+        "category": "femme"
+      },
+      {
+        "id": "f3",
+        "name": "Robe Elégante à motif floral foncé",
+        "price": "95",
+        "size": "42 à 48",
+        "couleur": "Brun-Marron",
+        "image": "Media-p-20260218/pict12.jpeg",
+        "description": "Robe longue fluide, idéale pour les soirées élégantes",
+        "category": "femme"
+      },
+      {
+        "id": "f4",
+        "name": "Robe Elégante Espoll ",
+        "price": "95",
+        "size": "42 à 48",
+        "couleur": "Rouge avec paillette",
+        "image": "Media-p-20260218/pict15.jpeg"
+      },
+      {
+        "id": "f5",
+        "name": "Robe Plissée Zera à Ceinture Rouge",
+        "price": "65",
+        "size": "44 à 50",
+        "couleur": "Rouge sang",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (1).jpeg",
+        "description": "Jupe plissée légère et confortable, parfaite pour le quotidien",
+        "category": "femme"
+      },
+      {
+        "id": "f6",
+        "name": "Complet pantalon et gilet lovelf Bras Cassé Bleu  ",
+        "price": "75",
+        "size": "36 à 42",
+        "couleur": "Bleu",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (2).jpeg",
+        "description": "Robe légère et fleurie, idéale pour la saison printanière",
+        "category": "femme"
+      },
+      {
+        "id": "f7",
+        "name": "Robe Plissée Zera à Ceinture Noire",
+        "price": "65",
+        "size": "44 à 50",
+        "couleur": "Noir - Blanc",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM.jpeg",
+        "description": "sizeur complet pour femme, élégance professionnelle",
+        "category": "femme"
+      },
+      {
+        "id": "f8",
+        "name": "Blouse blanche Unique avec boutons décoratifs ",
+        "price": "35",
+        "size": "36 à 50",
+        "couleur": "Blanc",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (1).jpeg",
+        "description": "Chemisier blanc classique, essentiel de toute garde-robe",
+        "category": "femme"
+      } 
+  // ... ajoutez d’autres produits
+];
 
 export default function Home() {
   return (
     <div>
       <Hero />
       <Boutique />
-      <ProductCatalog />
+      <ProductCatalog products={sampleProducts} title="Nos dernières nouveautés" />
       <Contact />
       <SocialNetworks />
       <Footer />
