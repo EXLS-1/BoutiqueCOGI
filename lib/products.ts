@@ -1,14 +1,17 @@
 import rawData from "@/data/product-data.json";
 import { Product } from "@/types/product";
+import { cache } from "react";
 
-export const getAllProducts = (): Product[] => {
-  return Object.values(rawData.products)
+export const getAllProducts = cache(async (): Promise<Product[]> => {
+  const products = Object.values(rawData.products)
     .flat()
-    .map((product: any) => ({
-      ...product,
-      price: Number(product.price),
-      image: product.image.startsWith("/")
-        ? product.image
-        : `/${product.image}`,
+    .map((p: any) => ({
+      ...p,
+      price: Number(p.price),
+      image: p.image.startsWith("/")
+        ? p.image
+        : `/${p.image}`,
     }));
-};
+
+  return products;
+});
