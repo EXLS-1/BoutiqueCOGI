@@ -1,75 +1,60 @@
 "use client";
 
 import Image from "next/image";
+import { Product } from "@/types/product";
 import useCart from "@/store/use-cart";
-import Link from "next/link";
 import toast from "react-hot-toast";
 
-export const ProductDetail = ({ product }: any) => {
-  const { items, addItem, updateQuantity } = useCart();
-  const cartItem = items.find((item) => item.id === product.id);
-  const quantity = cartItem ? cartItem.quantity : 0;
+interface Props {
+  product: Product;
+}
+
+export const ProductDetail = ({ product }: Props) => {
+  const { addItem, items, updateQuantity } = useCart();
+  const cartItem = items.find(i => i.id === product.id);
+  const quantity = cartItem?.quantity ?? 1;
+
+  const handleAdd = () => {
+    addItem({ ...product, quantity });
+    toast.success("Produit ajouté au panier");
+  };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        
-        {/* Galerie Image */}
-        <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-inner">
-          <Image src={product.image} alt={product.name} fill className="object-cover" priority />
+    <div className="max-w-7xl mx-auto py-12 px-4 grid lg:grid-cols-2 gap-12">
+      <Image
+        src={product.image}
+        alt={product.name}
+        width={600}
+        height={600}
+        className="rounded-xl object-cover"
+        priority
+      />
+
+      <div className="space-y-6">
+        <h1 className="text-5xl font-playfair font-bold">
+          {product.name}
+        </h1>
+
+        <p className="text-3xl">
+          {product.price.toLocaleString()} XOF
+        </p>
+
+        <p className="text-gray-600">
+          {product.description}
+        </p>
+
+        <div className="flex gap-4">
+          <button onClick={() => updateQuantity(product.id, "decrease")}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => updateQuantity(product.id, "increase")}>+</button>
         </div>
 
-        {/* Info & Actions */}
-        <div className="flex flex-col space-y-8">
-          <div>
-            <span className="text-sm uppercase tracking-widest text-gray-400 font-bold">{product.category}</span>
-            <h1 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mt-2">{product.name}</h1>
-            <p className="text-3xl font-light text-black mt-4">{product.price.toLocaleString()} XOF</p>
-          </div>
-
-          <p className="text-gray-600 leading-relaxed font-lato text-lg">{product.description}</p>
-
-          <div className="pt-8 border-t border-gray-100 space-y-6">
-            <div className="flex flex-wrap gap-4 items-center">
-              {/* Quantité Selector */}
-              <div className="flex items-center border-2 border-black rounded-sm overflow-hidden h-14">
-                <button 
-                   onClick={() => updateQuantity(product.id, 'decrease')}
-                   className="px-4 hover:bg-gray-100 transition-colors font-bold text-xl"
-                >-</button>
-                <span className="w-12 text-center font-bold text-lg">{quantity || 1}</span>
-                <button 
-                   onClick={() => updateQuantity(product.id, 'increase')}
-                   className="px-4 hover:bg-gray-100 transition-colors font-bold text-xl"
-                >+</button>
-              </div>
-
-              <button
-                onClick={() => {
-                  addItem({ ...product, quantity: 1 });
-                  toast.success("Panier mis à jour");
-                }}
-                className="flex-1 bg-black text-white h-14 font-bold tracking-[0.2em] uppercase hover:bg-gray-800 transition-all shadow-xl active:scale-95"
-              >
-                Ajouter au panier
-              </button>
-            </div>
-
-            {/* Meta Info */}
-            <div className="grid grid-cols-3 gap-4 py-6 border-y border-gray-50">
-              {[
-                { icon: "fa-shield-alt", text: "Garantie" },
-                { icon: "fa-truck", text: "Livraison" },
-                { icon: "fa-undo", text: "Retours" }
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center text-center gap-2">
-                  <i className={`fas ${item.icon} text-gray-300 text-xl`}></i>
-                  <span className="text-[10px] uppercase font-bold text-gray-500">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <button
+          onClick={handleAdd}
+          className="bg-black text-white px-8 py-4 uppercase tracking-widest"
+        >
+          Ajouter au panier
+        </button>
       </div>
     </div>
   );
