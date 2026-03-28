@@ -1,22 +1,21 @@
-// app/page.tsx
-
 import Hero from "@/components/hero";
 import Boutique from "@/components/boutique";
-import { ProductList } from "@/components/product-list";
+import ProductCatalog from "@/components/product-catalog";
 import { getAllProducts } from "@/lib/products";
 
-export default function Home() {
-  const products = getAllProducts();
+export const revalidate = 60; // ISR toutes les 60 secondes
+
+export default async function Home() {
+  const products = await getAllProducts();
 
   return (
     <main>
       <Hero />
       <Boutique />
-      <ProductList
+      <ProductCatalog
         title="Nos dernières nouveautés"
         products={products}
       />
-      {/* autres sections */}
     </main>
   );
 }
