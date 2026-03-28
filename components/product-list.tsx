@@ -1,13 +1,24 @@
-import { useState } from "react";
+"use client";
+
+import { useMemo, useState } from "react";
+import { Product } from "@/types/product";
 import ProductCard from "@/components/product-card";
 
-export const ProductList = ({ products, title }: { products: any[], title: string }) => {
+interface Props {
+  products: Product[];
+  title: string;
+}
+
+export const ProductList = ({ products, title }: Props) => {
    const [searchTerm, setSearchTerm] = useState("");
 
    // Filtrage sécurisé
-   const filtered = (products || []).filter(p => 
-     p.name?.toLowerCase().includes(searchTerm.toLowerCase())
-   );
+   const filteredProducts = useMemo(() => {
+    const term = search.toLowerCase();
+    return products.filter(p =>
+      p.name.toLowerCase().includes(term)
+    );
+  }, [products, search]);
 
   return (
     <section className="py-20 bg-white">
