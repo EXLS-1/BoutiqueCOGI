@@ -32,7 +32,7 @@ export const RightSidebar = () => {
       aria-modal="true"
       aria-label="Panier et favoris"
       className={cn(
-        "fixed inset-y-0 right-0 z-[100] w-full sm:w-[420px] bg-white border-l shadow-xl transition-transform duration-300",
+        "fixed inset-y-0 right-0 z-100 w-full sm:w-105 bg-white border-l shadow-xl transition-transform duration-300",
         isRightSidebarOpen ? "translate-x-0" : "translate-x-full"
       )}
     >
