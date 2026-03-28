@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma"; // Assurez-vous que le chemin vers votre instance prisma est correct
 import { ProductDetail } from "@/components/product-detail";
+import { getAllProducts } from "@/lib/products.ts";
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
@@ -11,12 +12,9 @@ interface ProductPageProps {
  * GÉNÉRATION DES METADATA (SEO)
  * S'exécute côté serveur pour créer les balises <title>, <meta description>, etc.
  */
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { id } = await params;
-  
-  const product = await prisma.product.findUnique({
-    where: { id },
-  });
+export async function generateStaticParams() {
+  const products = getAllProducts();
+  return products.map((product) => ({ id: product.id }));
 
   if (!product) {
     return {

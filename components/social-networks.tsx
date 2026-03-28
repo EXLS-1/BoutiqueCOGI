@@ -1,5 +1,8 @@
-// components/ui/social-networks.tsx
+import socialData from "@/data/social-data.json";
+
 export default function SocialNetworks() {
+  const { whatsapp, facebook, telegram, tiktok, instagram } = socialData.social;
+  
   return (
     <section className="py-20 bg-gray-50 border-t border-gray-200" id="reseaux">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
