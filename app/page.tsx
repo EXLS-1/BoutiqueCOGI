@@ -8,6 +8,7 @@ import ProductCatalog from "@/components/product-catalog";
 import Contact from "@/components/contact";
 import SocialNetworks from "@/components/social-networks";
 import Footer from "@/components/footer";
+import { ProductList } from "@/components/product-list";
 
 // Données d’exemple pour le catalogue
 const sampleProducts = [
