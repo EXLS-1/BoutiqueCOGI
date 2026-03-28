@@ -1,4 +1,4 @@
-
+// lib/products.ts
 import rawData from "@/data/product-data.json";
 
 export const getAllProducts = () => {
