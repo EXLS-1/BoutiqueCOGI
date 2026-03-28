@@ -2,9 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import ProductList from '@/components/product-list';
-
-export const ProductList = ({ products, title }: { products: any[], title: string }) => {
+import  {ProductList from '@/components/product-list';
+    
+const ProductList = ({ products, title }: { products: any[], title: string }) => {
    const [searchTerm, setSearchTerm] = useState("");
 
 export default function Home() {
@@ -279,4 +279,5 @@ export default function Home() {
       </footer>
     </div>
   );
+}
 }
