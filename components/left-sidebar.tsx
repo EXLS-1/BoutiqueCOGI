@@ -53,7 +53,7 @@ export const LeftSidebar = () => {
         role="navigation"
         aria-label="Menu principal"
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-[280px] bg-white border-r shadow-xl",
+          "fixed inset-y-0 left-0 z-50 w-70 bg-white border-r shadow-xl",
           "transition-transform duration-300 ease-out",
           // ❗ Cachée par défaut (mobile + desktop)
           isLeftSidebarOpen ? "translate-x-0" : "-translate-x-full"
