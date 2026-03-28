@@ -1,13 +1,12 @@
-"use client";
-
-import { ProductCard } from "./product-card";
 import { useState } from "react";
 
 export const ProductList = ({ products, title }: { products: any[], title: string }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+   const [searchTerm, setSearchTerm] = useState("");
 
- const filtered = (products || []).filter(p => ...) 
-    p.name.toLowerCase().includes(searchTerm.toLowerCase());
+   // Filtrage sécurisé
+   const filtered = (products || []).filter(p => 
+     p.name?.toLowerCase().includes(searchTerm.toLowerCase())
+   );
 
   return (
     <section className="py-20 bg-white">
