@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProductCard from "@/components/product-card";
 
 export const ProductList = ({ products, title }: { products: any[], title: string }) => {
    const [searchTerm, setSearchTerm] = useState("");
