@@ -26,7 +26,7 @@ export const Carousel = ({ products }: Props) => {
 
   return (
     <Card className="relative overflow-hidden rounded-lg shadow-md border-gray-300">
-      <div className="relative h-[500px] w-full">
+      <div className="relative h-125 w-full">
         <Image
           src={currentProduct.images[0]} // Prisma utilise un tableau de chaînes
           alt={currentProduct.name}
@@ -34,7 +34,7 @@ export const Carousel = ({ products }: Props) => {
           className="object-cover transition-opacity duration-1000"
         />
       </div>
-      <CardContent className="absolute inset-0 flex flex-col items-center justify-end pb-12 bg-gradient-to-t from-black/70 to-transparent text-white">
+      <CardContent className="absolute inset-0 flex flex-col items-center justify-end pb-12 bg-linear-to-t from-black/70 to-transparent text-white">
         <CardTitle className="text-4xl font-bold mb-2">
           {currentProduct.name}
         </CardTitle>
