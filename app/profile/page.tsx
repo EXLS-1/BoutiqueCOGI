@@ -10,11 +10,11 @@ import { formatDateFR, formatPriceXOF } from "@/lib/format";
 export default async function ProfilePage() {
   const session = await getServerSession();
 
-  if (!session?.user?.id) {
+  if (!session?.user?.email) {
     redirect("/login?callbackUrl=/profile");
   }
 
-  const orders = await getUserOrders(session.user.id);
+  const orders = await getUserOrders((session.user as any).id);
 
   return (
     <main className="container mx-auto px-4 py-8">
