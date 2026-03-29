@@ -1,11 +1,20 @@
 import { redirect } from "next/navigation";
 
-export function requireAdmin(session: any) {
-  if (!session || session.user.role !== "ADMIN") {
+interface SessionUser {
+  user?: {
+    id?: string;
+    role?: "ADMIN" | "USER";
+  };
+}
+
+export function requireAdmin(session: SessionUser) {
+  if (session?.user?.role !== "ADMIN") {
     redirect("/");
   }
 }
 
-export function requireAuth(session: any) {
-  if (!session) redirect("/login");
+export function requireAuth(session: SessionUser) {
+  if (!session?.user?.id) {
+    redirect("/login");
+  }
 }
