@@ -27,10 +27,10 @@ export const UIWrapper = ({ children }: { children: React.ReactNode }) => {
           "relative flex min-h-screen flex-col bg-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
           
           // Si le menu de gauche est ouvert : décalage vers la droite (300px) + flou
-          isLeftSidebarOpen && "translate-x-[300px] blur-[3px] opacity-70 pointer-events-none select-none",
+          isLeftSidebarOpen && "translate-x-75 blur-[3px] opacity-70 pointer-events-none select-none",
           
           // Si le menu de droite est ouvert : décalage vers la gauche (100% sur mobile, 400px sur desktop) + flou
-          isRightSidebarOpen && "-translate-x-[100%] sm:-translate-x-[400px] blur-[3px] opacity-70 pointer-events-none select-none"
+          isRightSidebarOpen && "-translate-x-full sm:-translate-x-100 blur-[3px] opacity-70 pointer-events-none select-none"
         )}
       >
         {children}
