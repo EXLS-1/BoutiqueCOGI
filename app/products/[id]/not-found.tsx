@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ProductNotFound() {
   return (
-    <main className="min-h-[70vh] flex items-center justify-center px-4">
+    <main role="alert" className="min-h-[70vh] flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center space-y-6">
         {/* Icône stylisée */}
         <div className="relative flex justify-center">
