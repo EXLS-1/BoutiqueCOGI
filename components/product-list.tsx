@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Product } from "@/types/product";
+import { Product } from "@/types/products";
 import ProductCard from "@/components/product-card";
 
 interface Props {
@@ -14,11 +14,11 @@ export const ProductList = ({ products, title }: Props) => {
 
    // Filtrage sécurisé
    const filteredProducts = useMemo(() => {
-    const term = search.toLowerCase();
+    const term = searchTerm.toLowerCase();
     return products.filter(p =>
       p.name.toLowerCase().includes(term)
     );
-  }, [products, search]);
+  }, [products, searchTerm]);
 
   return (
     <section className="py-20 bg-white">
@@ -43,7 +43,7 @@ export const ProductList = ({ products, title }: Props) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filtered.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
