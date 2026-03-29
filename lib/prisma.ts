@@ -1,6 +1,10 @@
 
 import { PrismaClient } from "@prisma/client";
 
+/**
+ * Singleton Prisma pour éviter les connexions multiples
+ * en environnement Next.js
+ */
 // On déclare une variable globale pour stocker l'instance de Prisma
 const prismaClientSingleton = () => {
   return new PrismaClient();
@@ -16,4 +20,6 @@ const prisma = globalThis.prisma ?? prismaClientSingleton();
 export default prisma;
 
 // En développement, on attache l'instance à l'objet global pour la réutiliser
-if (process.env.NODE_ENV !== "production") globalThis.prisma = prisma;
+if (process.env.NODE_ENV !== "production") {
+  globalThis.prisma = prisma;
+}
