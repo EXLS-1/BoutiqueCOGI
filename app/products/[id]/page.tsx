@@ -1,75 +1,76 @@
-import { Metadata } from "next";
+// app/product/[id]/page.tsx
+
 import { notFound } from "next/navigation";
-import prisma from "@/lib/prisma"; // Assurez-vous que le chemin vers votre instance prisma est correct
+import prisma from "@/lib/prisma";
 import { ProductDetail } from "@/components/product-detail";
-import { getAllProducts } from "@/lib/products.ts";
+import type { Metadata } from "next";
+
+export const revalidate = 60;
 
 interface ProductPageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
-/**
- * GÉNÉRATION DES METADATA (SEO)
- * S'exécute côté serveur pour créer les balises <title>, <meta description>, etc.
- */
+/* ---------- SSG ---------- */
 export async function generateStaticParams() {
-  const products = getAllProducts();
-  return products.map((product) => ({ id: product.id }));
+  const products = await prisma.product.findMany({
+    where: { isArchived: false },
+    select: { id: true },
+  });
+
+  return products.map(p => ({ id: p.id }));
+}
+
+/* ---------- SEO ---------- */
+export async function generateMetadata(
+  { params }: ProductPageProps
+): Promise<Metadata> {
+  const product = await prisma.product.findUnique({
+    where: { id: params.id },
+    select: {
+      name: true,
+      description: true,
+      images: true,
+    },
+  });
 
   if (!product) {
-    return {
-      title: "Produit non trouvé | Boutique COGI",
-    };
+    return { title: "Produit introuvable | Boutique COGI" };
   }
 
   return {
     title: `${product.name} | Boutique COGI`,
-    description: product.description,
+    description: product.description ?? "",
     openGraph: {
       title: product.name,
-      description: product.description,
-      images: [
-        {
-          url: product.images[0],
-          width: 800,
-          height: 600,
-          alt: product.name,
-        },
-      ],
+      description: product.description ?? "",
+      images: product.images?.[0]
+        ? [{ url: product.images[0] }]
+        : [],
     },
   };
 }
 
-/**
- * SERVER COMPONENT DE LA PAGE
- */
+/* ---------- PAGE ---------- */
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { id } = await params;
-
-  // Récupération directe des données depuis la base de données (Server-side)
   const product = await prisma.product.findUnique({
-    where: { id },
+    where: { id: params.id },
   });
 
-  // Si le produit n'existe pas, on renvoie vers la page 404 de Next.js
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
-  // Conversion du format Prisma vers le format attendu par votre composant UI si nécessaire
   const formattedProduct = {
     id: product.id,
     name: product.name,
     price: product.price,
-    image: product.images[0],
-    description: product.description,
+    image: product.images?.[0] ?? "/placeholder.jpg",
+    description: product.description ?? "",
     category: product.category,
   };
 
   return (
     <main className="min-h-screen pt-20">
       <div className="container mx-auto px-4">
-        {/* On passe les données au composant Client pour l'interactivité (panier, wishlist) */}
         <ProductDetail product={formattedProduct} />
       </div>
     </main>
