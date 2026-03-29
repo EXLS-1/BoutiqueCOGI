@@ -14,6 +14,17 @@ datasource db {
 // MODÈLES D'AUTHENTIFICATION (NextAuth)
 // ==========================================
 
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String?
+  entityId  String?
+  metadata  Json?
+  ip        String?
+  createdAt DateTime @default(now())
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
