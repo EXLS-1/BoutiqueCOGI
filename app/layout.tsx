@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
       </head>
       {/* On applique les styles de base directement sur le body via Tailwind */}
-      <body className="bg-black text-foreground font-lato overflow-x-hidden antialiased">
+      <body className="bg-var() text-(--text-primary) font-outfit overflow-x-hidden leading-[1.7] antialiased">
         <RootProviders>
           <LeftSidebar />
           <RightSidebar />
