@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <UIWrapper>
             <Navbar />
             {/* Remplacement de .main-wrapper par du Tailwind pur (pt-[70px]) */}
-            <main className="min-h-screen bg-white pt-[70px]">
+            <main className="min-h-screen bg-white pt-17.5">
               {children}
             </main>
           </UIWrapper>
