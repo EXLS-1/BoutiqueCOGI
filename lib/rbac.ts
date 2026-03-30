@@ -7,9 +7,9 @@ interface SessionUser {
   };
 }
 
-export function requireAdmin(session: SessionUser) {
+export function assertAdmin(session: SessionUser) {
   if (session?.user?.role !== "ADMIN") {
-    redirect("/");
+    throw new Error("FORBIDDEN");
   }
 }
 
