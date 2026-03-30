@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Product } from "@/types/product";
+import { Product } from "@/types/products";
 import { ProductList } from "@/components/product-list";
 
 interface Props {

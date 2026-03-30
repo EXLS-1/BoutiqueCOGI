@@ -1,19 +1,16 @@
+// lib/prisma.ts
 import { PrismaClient } from "@prisma/client";
 
-/**
- * Singleton Prisma pour éviter les connexions multiples
- * en environnement Next.js
- */
-const prismaClientSingleton = () => new PrismaClient();
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
 
-declare global {
-  var prisma: PrismaClient | undefined;
-}
-
-const prisma = globalThis.prisma ?? prismaClientSingleton();
-
-export default prisma;
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: ["error", "warn"],
+  });
 
 if (process.env.NODE_ENV !== "production") {
-  globalThis.prisma = prisma;
+  globalForPrisma.prisma = prisma;
 }
