@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 /* ====================== CART DRAWER ====================== */
 .cart-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.4);
@@ -131,3 +136,4 @@ html.dark .cart-item-price { color: var(--turquoise); }
   transition: var(--transition);
 }
 .modal-box button:hover { transform: translateY(-2px); }
+}

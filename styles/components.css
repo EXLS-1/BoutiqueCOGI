@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 /* ====================== HERO ====================== */
 .hero {
   min-height: 100vh; display: flex; align-items: center;
@@ -427,3 +432,4 @@ html.dark .product-category { color: var(--turquoise); }
   white-space: nowrap;
 }
 .newsletter-form button:hover { background: var(--turquoise); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+}

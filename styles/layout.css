@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 /* ==================== PERSONNALISATION SCROLLBAR ==================== */
 /* Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
@@ -204,3 +209,4 @@ footer {
 .footer-bottom-links { display: flex; gap: 24px; }
 .footer-bottom-links a { text-decoration: none; color: var(--text-muted); transition: var(--transition); }
 .footer-bottom-links a:hover { color: var(--turquoise); }
+}
