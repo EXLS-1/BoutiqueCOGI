@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: 1fr; text-align: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
@@ -24,4 +29,5 @@
   .about-visual { grid-template-columns: 1fr; }
   .about-box:nth-child(1) { grid-row: auto; }
   .trust-bar-inner { gap: 24px; }
+}
 }

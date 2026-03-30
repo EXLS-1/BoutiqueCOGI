@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 :root {
   --white: rgb(255, 255, 255);
   --turquoise: rgb(64, 224, 208);
@@ -33,4 +38,5 @@ html.dark {
   --shadow-md: 0 8px 30px rgba(0,0,0,0.25);
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.35);
   --shadow-glow: 0 0 40px rgba(64,224,208,0.2);
+}
 }
