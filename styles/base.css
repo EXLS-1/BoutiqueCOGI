@@ -1,3 +1,8 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer {
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -55,3 +60,4 @@ h1, h2, h3, h4 {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+}
