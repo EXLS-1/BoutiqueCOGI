@@ -1,0 +1,36 @@
+:root {
+  --white: rgb(255, 255, 255);
+  --turquoise: rgb(64, 224, 208);
+  --turquoise-deep: rgb(43, 188, 173);
+  --sky: rgb(135, 206, 235);
+  --sky-light: rgb(184, 228, 248);
+  --rose: rgb(242, 167, 179);
+  --rose-light: rgb(250, 221, 225);
+  --rose-deep: rgb(232, 137, 154);
+  --bg: rgb(250, 252, 253);
+  --bg-card: rgb(255, 255, 255);
+  --text-primary: rgb(26, 42, 58);
+  --text-secondary: rgb(90, 110, 128);
+  --text-muted: rgb(143, 163, 181);
+  --border: rgb(232, 239, 245);
+  --shadow-sm: 0 2px 8px rgba(26,42,58,0.06);
+  --shadow-md: 0 8px 30px rgba(26,42,58,0.08);
+  --shadow-lg: 0 20px 60px rgba(26,42,58,0.12);
+  --shadow-glow: 0 0 40px rgba(64,224,208,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+html.dark {
+  --bg: rgb(13, 27, 42);
+  --bg-card: rgb(21, 34, 56);
+  --text-primary: rgb(237, 242, 247);
+  --text-secondary: rgb(160, 180, 200);
+  --text-muted: rgb(107, 131, 154);
+  --border: rgb(30, 51, 80);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.25);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.35);
+  --shadow-glow: 0 0 40px rgba(64,224,208,0.2);
+}
