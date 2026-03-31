@@ -48,13 +48,19 @@
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.35);
   --shadow-glow: 0 0 40px rgba(64,224,208,0.2);
 }
-@layer base {
-  
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
   html {
     /* Remplace tout le script de smooth scrolling JS */
     scroll-behavior: smooth;
   }
-  }
+  
   /* ===== Scrollbar (Chrome, Edge, Safari) ===== */
   ::-webkit-scrollbar {
     width: 10px;
