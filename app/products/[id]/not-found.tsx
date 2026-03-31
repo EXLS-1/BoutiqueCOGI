@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function NotFound() {
-  return (
+    return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
       {/* Utilisation d'une police élégante cohérente avec ton layout */}
       <h1 className="font-playfair text-7xl font-bold text-gray-900">404</h1>
@@ -14,7 +14,7 @@ export default function NotFound() {
         Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
       </p>
 
-      {/* Bouton de retour à l'accueil pour la rétention client */}
+      {/* Bouton de retour à l'accueil pour la rétention client */}
       <Link 
         href="/"
         className="mt-8 rounded-full bg-black px-8 py-3 text-sm font-medium text-white transition-transform hover:scale-105 active:scale-95"
