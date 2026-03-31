@@ -14,11 +14,11 @@ export default function Hero() {
             muted
             loop
             playsInline
-            poster="/video-poster1.jpg"
+            
           >
             <source
-              src="/Media-v-20260218/Vids20260212at0710PM.mp4"
-              type="video/mp4"
+              src="@/Media-v-20260218/Vids20260212at0710PM.mp4"
+              type="mp4"
             />
           </video>
         </div>
@@ -32,8 +32,8 @@ export default function Hero() {
             poster="/video-poster2.jpg"
           >
             <source
-              src="/Media-v-20260218/WhatsApp Video 2026-02-18 at 07.10.31 PM.mp4"
-              type="video/mp4"
+              src="@/Media-v-20260218/Vids20260212at0912PM.mp4"
+              type="mp4"
             />
           </video>
         </div>
