@@ -11,7 +11,7 @@ export const Navbar = () => {
   const { toggleLeftSidebar, toggleRightSidebar } = useUIStore();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[60] h-[70px] bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
+    <nav className="fixed top-0 left-0 right-0 z-60 h-17.5 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
       <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
         {/* Menu Toggle (Mobile/Desktop Left) */}
