@@ -9,13 +9,14 @@ export default async function Home() {
   const products = await getAllProducts();
 
   return (
-    <main>
+    <body>
       <Hero />
       <Boutique />
       <ProductCatalog
         title="Nos dernières nouveautés"
         products={products}
       />
-    </main>
+      <footer className="bg-gray-800 text-white text-center py-4 mt-10"/>
+    </body>
   );
 }
