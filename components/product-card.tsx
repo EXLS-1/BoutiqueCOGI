@@ -1,4 +1,4 @@
-// components/product-list.tsx
+// components/product-card.tsx
 "use client";
 
 import { useState } from "react";

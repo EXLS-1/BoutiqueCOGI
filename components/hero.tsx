@@ -1,4 +1,4 @@
-// components/ui/hero.tsx
+// components/hero.tsx
 export default function Hero() {
   return (
     <section

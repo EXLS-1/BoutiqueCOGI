@@ -1,4 +1,4 @@
-// components/ui/footer.tsx
+// components/footer.tsx
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white pt-20 pb-10">
