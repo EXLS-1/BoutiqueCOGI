@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {/* On applique les styles de base directement sur le body via Tailwind */}
       <body className="bg-var() text-(--text-primary) font-outfit overflow-x-hidden leading-[1.7] antialiased">
         <RootProviders>
+          <Sidebar/>
           <LeftSidebar />
           <RightSidebar />
           
